@@ -20,53 +20,40 @@
     "php": ">=7.2",
     "ext-curl": "*",
     "ext-json": "*",
-    "moneyphp/money": "^4.0"
+    "moneyphp/money": "^3.0|^4.0"
   },
   "require-dev": {
-    "ninjify/qa": "^0.12",
-    "ninjify/nunjuck": "dev-master as v0.3.99",
-    "nette/tester": "^2.3.1",
+    "ninjify/qa": "^0.14",
+    "ninjify/nunjuck": "^0.3",
     "mockery/mockery": "^1.3.3",
-    "phpstan/phpstan": "^0.12.34",
-    "phpstan/phpstan-strict-rules": "^0.12",
-    "nette/di": "^2.4.16|^3.0",
-    "nette/utils": "^2.5.5|^3.0"
+    "phpstan/phpstan": "^1.8.5",
+    "phpstan/phpstan-strict-rules": "^1.4.3",
+    "phpstan/phpstan-nette": "^1.1.0",
+    "phpstan/phpstan-deprecation-rules": "^1.1.0",
+    "nette/di": "^3.0.0",
+    "nette/utils": "^3.0.0"
   },
   "suggest": {
     "nette/di": "For GopayExtension"
+  },
+  "conflict": {
+    "nette/di": "<3.0"
   },
   "autoload": {
     "psr-4": {
       "Contributte\\GopayInline\\": "src/"
     }
   },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
   "extra": {
-    "ninjify": {
-      "qa": {
-        "codesniffer": {
-          "ruleset": "nette",
-          "folders": [
-            "src",
-            "tests"
-          ]
-        },
-        "codefixer": {
-          "ruleset": "nette",
-          "folders": [
-            "src",
-            "tests"
-          ]
-        },
-        "linter": {
-          "folders": [
-            "src",
-            "tests"
-          ]
-        }
-      }
-    },
     "branch-alias": {
-      "dev-master": "2.1-dev"
+      "dev-master": "2.2.x-dev"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   }
 }

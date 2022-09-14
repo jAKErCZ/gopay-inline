@@ -6,6 +6,7 @@ use ArrayAccess;
 use Countable;
 use IteratorAggregate;
 use RecursiveArrayIterator;
+use ReturnTypeWillChange;
 
 /**
  * @property-read array $data
@@ -103,6 +104,7 @@ class Response implements ArrayAccess, Countable, IteratorAggregate
 	 * @param mixed $offset
 	 * @return mixed
 	 */
+	#[ReturnTypeWillChange]
 	public function offsetGet($offset)
 	{
 		if ($this->data === null) {

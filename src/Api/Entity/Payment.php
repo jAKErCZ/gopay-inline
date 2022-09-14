@@ -7,6 +7,7 @@ use Contributte\GopayInline\Api\Objects\Item;
 use Contributte\GopayInline\Api\Objects\Parameter;
 use Contributte\GopayInline\Api\Objects\Payer;
 use Contributte\GopayInline\Api\Objects\Target;
+use Contributte\GopayInline\Exception\InvalidStateException;
 use Money\Money;
 
 class Payment extends AbstractEntity
@@ -88,9 +89,19 @@ class Payment extends AbstractEntity
 		$this->amount = $amount;
 	}
 
+	/**
+	 * @return non-empty-string
+	 */
 	public function getCurrency(): string
 	{
-		return $this->amount->getCurrency()->getCode();
+		/** @var string $code */
+		$code = $this->amount->getCurrency()->getCode();
+
+		if ($code === '') {
+			throw new InvalidStateException('Currency code cannot be empty');
+		}
+
+		return $code;
 	}
 
 	public function getOrderNumber(): ?string
