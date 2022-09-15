@@ -110,5 +110,14 @@ class PaymentsService extends AbstractPaymentService
 		// Make request
 		return $this->makeRequest('GET', 'payments/payment/' . $id . '/eet-receipts');
 	}
+	
+	/**
+	 * @param int|float $id ID of payment for cancel recurent pay
+	 */
+	public function cancelRecurrent($id): Response
+	{
+		// Make request
+		return $this->makeRequest('POST', 'payments/payment/' . $id . '/void-recurrence', null, Http::CONTENT_FORM );
+	}
 
 }
